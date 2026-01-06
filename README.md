@@ -77,13 +77,19 @@ int main() {
     return 0;
 }
 ```
-* Operation                         Time Complexity
 
-* Push()                               O(1)
-* Pop()                                O(1)
-* Peek()                               O(1)
-* Traversal/Display                    O(N)
-* sEmpty()                             O(1)
-* sFull()                              O(1)
+---
 
+#### Time Complexity of Stack Operations
+
+| **Operation**         | **Time Complexity** |
+| --------------------- | ------------------- |
+| `Push()`              | **O(1)**            |
+| `Pop()`               | **O(1)**            |
+| `Peek()`              | **O(1)**            |
+| `Traversal / Display` | **O(N)**            |
+| `isEmpty()`           | **O(1)**            |
+| `isFull()`            | **O(1)**            |
+
+---
 
