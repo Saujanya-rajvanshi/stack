@@ -22,7 +22,7 @@ using namespace std;
 int stack[MAX];
 int top = -1;
 
-// Push operation
+// Push operation push(stack, item, top)
 void push(int x) {
     if (top == MAX - 1) {
         cout << "Stack Overflow\n";
@@ -35,7 +35,7 @@ void push(int x) {
     }
 }
 
-// Pop operation
+// Pop operation pop(stack, item, top)
 void pop() {
     if (top == -1) {
         cout << "Stack Underflow\n";
@@ -77,3 +77,13 @@ int main() {
     return 0;
 }
 ```
+* Operation                         Time Complexity
+
+* Push()                               O(1)
+* Pop()                                O(1)
+* Peek()                               O(1)
+* Traversal/Display                    O(N)
+* sEmpty()                             O(1)
+* sFull()                              O(1)
+
+
