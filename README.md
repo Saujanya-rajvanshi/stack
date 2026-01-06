@@ -361,82 +361,31 @@ Postfix: `a b + c *`
 * `^` → **Right to Left**
 * `* / % + −` → **Left to Right**
 
+--- 
 ---
 
-## 🔹 Stack Rules for Expression Evaluation (COMPARE ALL 3)
+### Infix → Postfix vs Infix → Prefix (Rules Table)
 
-### 1️⃣ Infix Expression (Stack Evaluation Rule)
-
-**Key idea:** Convert **Infix → Postfix/Prefix**, then evaluate.
-
-**Rules (Conversion using stack):**
-
-1. If **operand** → add to output
-2. If **(** → push to stack
-3. If **)** → pop until **(** is removed
-4. If **operator**:
-
-   * Pop from stack **while precedence(top) ≥ precedence(current)**
-     (except `^` which is right associative)
-   * Then push operator
-5. Pop all remaining operators at end
-
-👉 **Infix itself is NOT directly evaluated using stack**
+| Rule / Point                   | Infix → Postfix     | Infix → Prefix      |
+| ------------------------------ | ------------------- | ------------------- |
+| Reverse expression first       | ❌ No                | ✅ Yes               |
+| Swap brackets `( ↔ )`          | ❌ No                | ✅ Yes               |
+| Scan direction                 | Left → Right        | Right → Left        |
+| Output directly operands       | ✅ Yes               | ✅ Yes               |
+| Use operator stack             | ✅ Yes               | ✅ Yes               |
+| Same operator allowed in stack | ❌ No                | ❌ No                |
+| Pop on higher precedence       | ✅ Yes               | ✅ Yes               |
+| Pop on equal precedence        | ✅ Yes (left assoc.) | ❌ No (right assoc.) |
+| Reverse final result           | ❌ No                | ✅ Yes               |
+| Brackets go to output          | ❌ No                | ❌ No                |
 
 ---
 
-### 2️⃣ Postfix Expression (Stack Evaluation Rule)
+### One-line memory trick 🧠
 
-**Scan from LEFT → RIGHT**
+* **Postfix** → *Normal scan, no reverse*
+* **Prefix** → *Reverse + swap brackets + reverse answer*
 
-1. If **operand** → push into stack
-2. If **operator**:
-
-   * Pop **operand2**
-   * Pop **operand1**
-   * Compute → `operand1 operator operand2`
-   * Push result back
-3. Final stack top = **answer**
-
-📌 **Order matters**
-`a b -` → `a − b`
-
----
-
-### 3️⃣ Prefix Expression (Stack Evaluation Rule)
-
-**Scan from RIGHT → LEFT**
-
-1. If **operand** → push into stack
-2. If **operator**:
-
-   * Pop **operand1**
-   * Pop **operand2**
-   * Compute → `operator operand1 operand2`
-   * Push result back
-3. Final stack top = **answer**
-
-📌 **Order matters**
-`- a b` → `a − b`
-
----
-
-## 🔹 One-Look Comparison (VERY IMPORTANT)
-
-| Expression | Scan Direction | Uses Stack          | Operand Order    |
-| ---------- | -------------- | ------------------- | ---------------- |
-| Infix      | Left → Right   | For conversion only | Precedence based |
-| Postfix    | Left → Right   | Yes                 | op1 then op2     |
-| Prefix     | Right → Left   | Yes                 | op1 then op2     |
-
----
-
-## 🔹TIP ⭐
-
-* **Infix → always convert first**
-* **Postfix → L → R**
-* **Prefix → R → L**
-* **Operator pops = 2 operands always**
 
 
 ###### recursion 
