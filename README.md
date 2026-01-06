@@ -354,7 +354,7 @@ Postfix: `a b + c *`
 
 ## 🔹 Operator Precedence ( highest → lowest)
 
-`( )  >  ^  >  * / %  >  + −`
+`( )  $ >  ^  >  * / %  >  + −`
 
 **Associativity:**
 
