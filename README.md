@@ -2,6 +2,7 @@
 - [basic](#basic)
 - [ADT](#ADT)
 - [stack representation](#stack-representation)
+- [arithmetic expression](#arithmetic-expression)
 
 
 ## basic 
@@ -247,3 +248,100 @@ int main() {
 * isEmpty → **O(1)**
 
 ---
+
+###### arithmetic expression
+
+## 📊 Arithmetic exprsion 
+---
+
+## 1️⃣ Infix Expression
+
+**Definition:**
+Operator is placed **between operands**.
+
+**Example:**
+`(a + b) * c / d`
+
+**Rules:**
+
+* Uses **precedence** and **associativity**
+* Needs **parentheses** to control order
+* Follows **BODMAS**
+
+**Advantages:**
+
+* Easy to read and understand
+* Commonly used in mathematics
+
+**Disadvantages:**
+
+* Hard to evaluate by machine
+* Requires parentheses
+
+---
+
+## 2️⃣ Prefix Expression (Polish Notation)
+
+**Definition:**
+Operator is placed **before operands**.
+
+**Format:**
+`operator operand1 operand2`
+
+**Example:**
+Infix: `(a + b) * c`
+Prefix: `* + a b c`
+
+**Rules:**
+
+* No parentheses needed
+* Evaluated **right to left**
+
+**Advantages:**
+
+* No ambiguity
+* Easy for compilers
+
+**Disadvantages:**
+
+* Hard for humans to read
+
+---
+
+## 3️⃣ Postfix Expression (Reverse Polish Notation)
+
+**Definition:**
+Operator is placed **after operands**.
+
+**Format:**
+`operand1 operand2 operator`
+
+**Example:**
+Infix: `(a + b) * c`
+Postfix: `a b + c *`
+
+**Rules:**
+
+* No parentheses needed
+* Evaluated **left to right**
+* Uses **stack**
+
+**Advantages:**
+
+* Easy evaluation using stack
+* No precedence rules needed
+
+**Disadvantages:**
+
+* Less readable for humans
+
+---
+
+## Quick Comparison Table
+
+| Expression | Operator Position | Parentheses | Evaluation   |
+| ---------- | ----------------- | ----------- | ------------ |
+| Infix      | Between operands  | Required    | Complex      |
+| Prefix     | Before operands   | Not needed  | Right → Left |
+| Postfix    | After operands    | Not needed  | Left → Right |
+
