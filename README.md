@@ -1,6 +1,7 @@
 # stack
 - [basic](#basic)
 - [ADT](#ADT)
+- [stack representation](#stack-representation)
 
 
 ## basic 
@@ -13,6 +14,12 @@
  
 
 ## ADT
+
+- [ADT using array](#ADT-array)
+- [ADT using linked list](#ADT-linked-list)
+
+### ADT array
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -78,6 +85,75 @@ int main() {
 }
 ```
 
+### ADT linked list
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* top = NULL;
+
+// Push operation
+void push(int x) {
+    Node* newNode = new Node();
+    newNode->data = x;
+    newNode->next = top;
+    top = newNode;
+    cout << x << " pushed into stack\n";
+}
+
+// Pop operation
+void pop() {
+    if (top == NULL) {
+        cout << "Stack Underflow\n";
+        return;
+    }
+    Node* temp = top;
+    cout << temp->data << " popped from stack\n";
+    top = top->next;
+    delete temp;
+}
+
+// Peek operation
+void peek() {
+    if (top == NULL) {
+        cout << "Stack is empty\n";
+        return;
+    }
+    cout << "Top element: " << top->data << endl;
+}
+
+// Display operation
+void display() {
+    if (top == NULL) {
+        cout << "Stack is empty\n";
+        return;
+    }
+    cout << "Stack elements: ";
+    Node* temp = top;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+    peek();
+    pop();
+    display();
+    return 0;
+}
+```
+
 ---
 
 #### Time Complexity of Stack Operations
@@ -93,3 +169,80 @@ int main() {
 
 ---
 
+
+## 📊 stack representation
+
+---
+
+1. **Array Representation**
+2. **Linked List Representation**
+
+---
+
+## **Array Representation of Stack**
+
+* **TOP** → stores index of top element
+* **N** → maximum size of stack
+
+**Conditions**
+
+* `TOP = -1` or `NULL` → Stack is **empty**
+* `TOP = N` → Stack is **full**
+
+**Operations**
+
+* **Push** → increment TOP, insert element
+* **Pop** → remove element at TOP, decrement TOP
+* **Peek** → return top element
+
+---
+
+## **Linked List Representation of Stack**
+
+* Uses **nodes (data + next)**
+* **top pointer** points to first node
+
+**Advantages**
+
+* Dynamic size (no overflow until memory ends)
+* Efficient memory use
+
+---
+
+## **Stack Operations (Linked List)**
+
+* **push()**
+
+  * Create new node
+  * `new->next = top`
+  * `top = new`
+
+* **pop()**
+
+  * Store `top` in temp
+  * `top = top->next`
+  * delete temp
+
+* **peek()**
+
+  * Display `top->data`
+
+* **display()**
+
+  * Traverse from `top` to `NULL`
+
+* **isEmpty()**
+
+  * `top == NULL`
+
+---
+
+## **Time Complexity**
+
+* Push → **O(1)**
+* Pop → **O(1)**
+* Peek → **O(1)**
+* Display → **O(N)**
+* isEmpty → **O(1)**
+
+---
