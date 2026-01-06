@@ -373,7 +373,7 @@ Postfix: `a b + c *`
 | Scan direction                 | Left → Right        | Right → Left        |
 | Output directly operands       | ✅ Yes               | ✅ Yes               |
 | Use operator stack             | ✅ Yes               | ✅ Yes               |
-| Same operator allowed in stack | ❌ No                | ❌ No                |
+| Same operator allowed in stack | ❌ No                | ✅ Yes               |
 | Pop on higher precedence       | ✅ Yes               | ✅ Yes               |
 | Pop on equal precedence        | ✅ Yes (left assoc.) | ❌ No (right assoc.) |
 | Reverse final result           | ❌ No                | ✅ Yes               |
