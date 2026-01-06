@@ -169,8 +169,9 @@ int main() {
 
 ---
 
+###### stack representation 
 
-## 📊 stack representation
+## 📊 Stack representation
 
 ---
 
