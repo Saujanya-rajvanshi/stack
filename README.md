@@ -3,7 +3,8 @@
 - [ADT](#ADT)
 - [stack representation](#stack-representation)
 - [arithmetic expression](#arithmetic-expression)
-
+- [recursion](#recursion)
+- [tower of hanoi](#tower-of-hanoi)
 
 ## basic 
 
@@ -437,3 +438,256 @@ Postfix: `a b + c *`
 * **Prefix → R → L**
 * **Operator pops = 2 operands always**
 
+
+###### recursion 
+---
+
+## 🔹 What is Recursion?
+
+* **Recursion** is a programming technique where a **function calls itself**.
+* Used to solve a problem by **breaking it into smaller sub-problems**.
+* Based on **divide and conquer** approach.
+
+---
+
+## 🔹 Principles of Recursion
+
+1. **Base Case**
+   → Condition where recursion **stops** (to avoid infinite calls).
+2. **Recursive Case**
+   → Function calls itself with a **smaller input**.
+3. **Same Pattern**
+   → Each sub-problem must follow the **same logic**.
+4. **Progress Toward Base Case**
+   → Every call moves closer to the base case.
+---
+
+## 🔹 Advantages
+
+* Simple and clean code
+* Best for problems like factorial, Fibonacci, tree traversal
+
+## 🔹 Disadvantages
+
+* More memory (uses stack)
+* Slower than iteration
+* Risk of stack overflow
+
+---
+
+## 🔹 Factorial using Non-Recursive (Iterative) Method
+
+```cpp
+#include <stdio.h>
+
+int factorial(int n)
+{
+    int i, fact = 1;
+    for(i = 1; i <= n; i++)
+    {
+        fact = fact * i;
+    }
+    return fact;
+}
+
+int main()
+{
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if(n < 0)
+        printf("Invalid input");
+    else
+        printf("Factorial = %d", factorial(n));
+
+    return 0;
+}
+```
+
+## 🔹 Factorial using **Recursive Method**
+
+```c
+#include <stdio.h>
+
+int factorial(int n)
+{
+    if(n == 0)        // Base case
+        return 1;
+    else
+        return n * factorial(n - 1);   // Recursive call
+}
+
+int main()
+{
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if(n < 0)
+        printf("Invalid input");
+    else
+        printf("Factorial = %d", factorial(n));
+
+    return 0;
+}
+```
+---
+
+### 🔁 Recursion vs Iteration 
+
+| **Attribute**      | **Recursion**                                                                 | **Iteration**                                                               |
+|-------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+| **Definition**     | Calling a function repeatedly                                                 | Executing a block of code repeatedly                                         |
+| **Format**         | A function calls itself until a base case is met                              | A loop runs as long as a condition is true                                   |
+| **Speed**          | Slower due to stack usage                                                     | Faster since it avoids stack overhead                                        |
+| **Termination**    | Ends when the base condition is satisfied                                     | Ends when the loop condition becomes false                                   |
+| **Infinite Loop**  | Can crash the system due to stack overflow                                    | Executes endlessly but doesn’t crash the system                              |
+| **Size of Code**   | Typically reduces code size                                                   | Often results in longer code                                                 |
+| **Usability**      | Used only with functions (self-calling)                                       | Implemented using loop constructs (for, while, etc.)                         |
+
+---
+
+---
+
+---
+
+## 🔹 Types of Recursion 
+
+### 1️⃣ Based on Function Call
+
+**Direct Recursion**
+
+* Function calls itself directly
+* Example: factorial
+
+**Indirect Recursion**
+
+* Function calls another function which calls it back
+* Example: A() → B() → A()
+
+---
+
+### 2️⃣ Based on Pending Operations
+
+**Tail Recursion**
+
+* Recursive call is the **last statement**
+* Faster, optimizable
+
+**Head Recursion**
+
+* Recursive call happens **first**
+* Slower, more stack use
+
+---
+
+### 3️⃣ Based on Structure
+
+**Linear Recursion**
+
+* Only **one recursive call**
+* Example: factorial
+
+**Tree Recursion**
+
+* **Multiple recursive calls**
+* Example: Fibonacci
+
+---
+
+## 🔹 One-Line Summary
+
+* **Direct / Indirect** → who calls whom
+* **Head / Tail** → pending work or not
+* **Linear / Tree** → number of recursive calls
+
+
+
+##### tower of hanoi
+---
+
+## 🔹 Tower of Hanoi (Important Recursion Problem)
+
+### 📌 Definition
+
+Tower of Hanoi is a **mathematical puzzle** with:
+
+* **3 pegs (A, B, C)**
+* **N disks** of different sizes
+* Smaller disk always placed **above larger disk**
+
+---
+
+## 🎯 Objective
+
+Move **all disks from source peg (A) to destination peg (C)** using auxiliary peg (B)
+**without breaking rules**
+
+---
+
+## 📏 Rules
+
+1. Only **one disk** can be moved at a time
+2. Only **top disk** can be moved
+3. **No larger disk** on smaller disk
+
+---
+
+## 🔁 Recursive Idea
+
+To move **N disks** from A → C using B:
+
+1. Move **N−1 disks** from A → B using C
+2. Move **largest disk** from A → C
+3. Move **N−1 disks** from B → C using A
+
+---
+
+## ⏱ Time Complexity
+
+* **T(n) = 2ⁿ − 1 moves**
+* Time: **O(2ⁿ)**
+* Space (recursion stack): **O(n)**
+
+---
+
+## 💡 Base Case
+
+* If **n = 1**, move disk directly from source to destination
+
+---
+
+## 🔹 C Program: Tower of Hanoi (Recursive)
+
+```c
+#include <stdio.h>
+
+void towerOfHanoi(int n, char from, char aux, char to) {
+    // Base case
+    if (n == 1) {
+        printf("Move disk 1 from %c to %c\n", from, to);
+        return;
+    }
+
+    // Step 1: move n-1 disks to auxiliary peg
+    towerOfHanoi(n - 1, from, to, aux);
+
+    // Step 2: move largest disk to destination
+    printf("Move disk %d from %c to %c\n", n, from, to);
+
+    // Step 3: move n-1 disks to destination peg
+    towerOfHanoi(n - 1, aux, from, to);
+}
+
+int main() {
+    int n;
+    printf("Enter number of disks: ");
+    scanf("%d", &n);
+
+    towerOfHanoi(n, 'A', 'B', 'C');
+    return 0;
+}
+```
+
+---
